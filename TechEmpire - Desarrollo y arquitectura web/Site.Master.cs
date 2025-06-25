@@ -12,7 +12,7 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["User"] != null)
+            if (Session["User"] != null && Session["TablaError"] == null)
             {
 
                 BEUsuario user = Session["User"] as BEUsuario;
@@ -28,7 +28,12 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
             if (Session["TablaError"] != null)
             {
                 btnInicio.HRef = "~/Login";
-                btnEventos.Visible = false;
+
+                //cierra la sesion al salir de la página de reparación de DV
+                if (!Request.Path.EndsWith("ReparacionBD.aspx", StringComparison.OrdinalIgnoreCase))
+                {
+                    Session["User"] = null;
+                }
             }
             else
             {
