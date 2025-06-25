@@ -48,7 +48,6 @@ namespace BLL
                 throw new Exception("Las credenciales no coinciden");
             }
 
-
             bllEvento.RegistrarEvento(new Evento(user.NombreUsuario, "Sesiones", "Inicio sesión", 1));
             ModificarContFallido(user.NombreUsuario, 0);
             return user;

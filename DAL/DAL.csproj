@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DALConexion.cs" />
+    <Compile Include="DALDigitoVerificador.cs" />
     <Compile Include="DALEvento.cs" />
     <Compile Include="DALProducto.cs" />
     <Compile Include="DALUsuario.cs" />

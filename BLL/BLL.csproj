@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLLDigitoVerificador.cs" />
     <Compile Include="BLLEvento.cs" />
     <Compile Include="BLLProducto.cs" />
     <Compile Include="BLLRol.cs" />

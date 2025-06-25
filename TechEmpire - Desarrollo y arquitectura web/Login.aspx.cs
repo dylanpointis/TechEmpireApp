@@ -1,19 +1,21 @@
 ﻿using BE;
 using BLL;
+using BLL;
 using Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BLL;
 
 namespace TechEmpire___Desarrollo_y_arquitectura_web
 {
     public partial class Login : System.Web.UI.Page
     {
         private BLLUsuario bllUsuario = new BLLUsuario();
+        private BLLDigitoVerificador bllDV = new BLLDigitoVerificador();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -40,13 +42,31 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
 
                 Session["User"] = user;
 
+                bllDV.ComprobarDV();
 
                 Response.Redirect("Default.aspx");
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                if (ex is TaskCanceledException)
+                {
+                    BEUsuario user = Session["User"] as BEUsuario;
+                    Session["TablaError"] = ex.Message;
+                    if (user.codRol == 1)
+                    {
+                        Response.Redirect("ReparacionBD.aspx");
+                    }
+                    else
+                    {
+                        Response.Write($"<script>alert('Sistema no disponible');</script>");
+                    }
+                }
+                else
+                {
+                    lblError.Text = ex.Message;
+                }
             }
+
         }
 
         protected void btnRegistrar_Click(object sender, EventArgs e)

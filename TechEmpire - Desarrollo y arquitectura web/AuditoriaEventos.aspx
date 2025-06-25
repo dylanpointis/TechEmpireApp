@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AuditoriaEventos.aspx.cs" Inherits="TechEmpire___Desarrollo_y_arquitectura_web.AuditoriaEventos" %>
+﻿<%@ Page Title="Auditoría de eventos" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AuditoriaEventos.aspx.cs" Inherits="TechEmpire___Desarrollo_y_arquitectura_web.AuditoriaEventos" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 

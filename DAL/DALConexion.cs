@@ -175,12 +175,43 @@ namespace DAL
             catch (Exception ex) { tran.Rollback(); throw ex; }
         }
 
+        public void CargarDataSet(string nombreTabla, string condicion)
+        {
+            try
+            {
+                Conectar();
+                dataSet = new DataSet();
+
+                tran = con.BeginTransaction();
+
+                SqlCommand command = new SqlCommand($"SELECT * FROM {nombreTabla} WHERE {condicion}", con);
+                command.Transaction = tran;
+
+                adapter = new SqlDataAdapter(command);
+                adapter.FillSchema(dataSet, SchemaType.Source, nombreTabla + " " + condicion);
+                adapter.Fill(dataSet, nombreTabla + " " + condicion);
+
+                tran.Commit();
+                con.Close();
+            }
+            catch (Exception ex) { tran.Rollback(); throw ex; }
+        }
+
         public DataTable TraerTabla(string tabla)
         {
 
             CargarDataSet(tabla);
 
             DataTable Tabla = dataSet.Tables[tabla];
+            return Tabla;
+        }
+
+        public DataTable TraerTabla(string tabla, string condicion)
+        {
+
+            CargarDataSet(tabla, condicion);
+
+            DataTable Tabla = dataSet.Tables[tabla + " " + condicion];
             return Tabla;
         }
         #endregion

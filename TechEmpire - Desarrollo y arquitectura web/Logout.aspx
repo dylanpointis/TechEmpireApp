@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Logout.aspx.cs" Inherits="TechEmpire___Desarrollo_y_arquitectura_web.Logout" %>
+﻿<%@ Page Title="Cierre de sesión" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Logout.aspx.cs" Inherits="TechEmpire___Desarrollo_y_arquitectura_web.Logout" %>
 
 <%--<!DOCTYPE html>--%>
 
