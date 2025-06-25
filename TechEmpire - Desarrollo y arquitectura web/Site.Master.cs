@@ -25,6 +25,15 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
                 }
             }
 
+            if (Session["TablaError"] != null)
+            {
+                btnInicio.HRef = "~/Login";
+                btnEventos.Visible = false;
+            }
+            else
+            {
+                btnInicio.HRef = "~/";
+            }
         }
     }
 }

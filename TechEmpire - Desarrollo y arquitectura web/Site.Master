@@ -50,9 +50,9 @@
                 </button>
                 <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/About">Acerca de</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">Contacto</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/" id="btnInicio">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/About" id="btnAcercaDe">Acerca de</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact" id="btnContacto">Contacto</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/AuditoriaEventos" visible="false" id="btnEventos">Eventos</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Logout" visible="false" id="btnCerrarSesion">Cerrar sesión</a></li>
                     </ul>

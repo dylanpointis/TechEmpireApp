@@ -29,6 +29,7 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
             Response.Write("<script>alert('Se recalculó el dígito verificador');</script>");
 
             Session["User"] = null;
+            Session["TablaError"] = null;
             Response.Redirect("Login.aspx");
         }
     }
