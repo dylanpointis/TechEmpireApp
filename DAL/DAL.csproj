@@ -51,6 +51,7 @@
     <Compile Include="DALDigitoVerificador.cs" />
     <Compile Include="DALEvento.cs" />
     <Compile Include="DALProducto.cs" />
+    <Compile Include="DALRespaldo.cs" />
     <Compile Include="DALUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
