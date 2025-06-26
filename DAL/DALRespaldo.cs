@@ -11,7 +11,7 @@ namespace DAL
         private DALConexion dalCon = new DALConexion();
         public void RealizarBackUp(string ruta)
         {
-            dalCon.EjecutarComando($"BACKUP DATABASE SistemaAltaGama TO DISK= '{ruta}'");
+            dalCon.EjecutarComando($"BACKUP DATABASE TechEmpire TO DISK= '{ruta}'");
         }
 
 
@@ -23,11 +23,11 @@ namespace DAL
 
 
                 //Cambiar la base de datos a modo SINGLE_USER y cerrar todas las conexiones activas
-                dalCon.EjecutarComando("ALTER DATABASE SistemaAltaGama SET SINGLE_USER WITH ROLLBACK IMMEDIATE;");
+                dalCon.EjecutarComando("ALTER DATABASE TechEmpire SET SINGLE_USER WITH ROLLBACK IMMEDIATE;");
                 //Restaurar
-                dalCon.EjecutarComando($"RESTORE DATABASE SistemaAltaGama FROM DISK = '{ruta}' WITH REPLACE;");
+                dalCon.EjecutarComando($"RESTORE DATABASE TechEmpire FROM DISK = '{ruta}' WITH REPLACE;");
                 //Volver a poner en MULTI_USER
-                dalCon.EjecutarComando("ALTER DATABASE SistemaAltaGama SET MULTI_USER;");
+                dalCon.EjecutarComando("ALTER DATABASE TechEmpire SET MULTI_USER;");
             }
             catch (Exception ex)
             {
@@ -35,7 +35,7 @@ namespace DAL
             }
             finally // Asegura que la base de datos esté en modo multiusuario al final del proceso, incluso si hay un fallo
             {
-                dalCon.EjecutarComando("ALTER DATABASE SistemaAltaGama SET MULTI_USER;");
+                dalCon.EjecutarComando("ALTER DATABASE TechEmpire SET MULTI_USER;");
             }
         }
     }
