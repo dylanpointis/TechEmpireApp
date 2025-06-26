@@ -7,8 +7,8 @@
         <br />
         Tabla afectada:
     </b></p>
+
     <asp:Label ID="lblTablaAfectada" runat="server" Text="-" Font-Bold="true" style="text-align: center; display: block; width: 100%; font-size: 40px"></asp:Label>
-    <asp:Button ID="btnRecalcular" runat="server" Text="Recalcular dígito verificador" style="display: block; width: 50%; font-size: 40px; margin-left:25%" OnClick="btnRecalcular_Click"/>
-    <br />
-    <asp:Button ID="btnSalir" runat="server" Text="Volver a inicio de sesión" style="display: block; width: 50%; font-size: 40px; margin-left:25%" OnClick="btnSalir_Click"/>
+    <asp:Button  ID="btnRecalcular" runat="server" Text="Recalcular dígito verificador" style="display: block; font-size: 20px; margin:20px auto; width:100%; padding: 10px"  OnClick="btnRecalcular_Click" Width="698px"/>
+    <asp:Button ID="btnSalir" runat="server" Text="Volver a inicio de sesión"  style="display: block; font-size: 20px; margin: 20px auto; width: 100%; padding: 10px " OnClick="btnSalir_Click" />
 </asp:Content>
