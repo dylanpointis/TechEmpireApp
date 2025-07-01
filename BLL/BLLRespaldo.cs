@@ -13,21 +13,18 @@ namespace BLL
     {
         private DALRespaldo dalRespaldo = new DALRespaldo();
         private BLLEvento bllEv = new BLLEvento();
-       
 
-        public void RealizarBackUp(string nombreUsuario)
+
+        public void RealizarBackUp(string ruta, string nombreUsuario)
         {
-            string nombreArchivo = $"TechEmpire.BackUp_{DateTime.Now.ToString("ddMMyy_HHmm")}.bak";
-            string rutaCompleta = System.IO.Path.Combine(@"D:\backuptest", nombreArchivo);
 
-
-            dalRespaldo.RealizarBackUp(rutaCompleta);
+            dalRespaldo.RealizarBackUp(ruta);
             bllEv.RegistrarEvento(new Evento(nombreUsuario, "Respaldos", "Backup realizado", 1));
         }
 
-        public void RealizarRestore(string nombreUsuario)
+        public void RealizarRestore(string ruta, string nombreUsuario)
         {
-            dalRespaldo.RealizarRestore(Directory.GetCurrentDirectory());
+            dalRespaldo.RealizarRestore(ruta);
             bllEv.RegistrarEvento(new Evento(nombreUsuario, "Respaldos", "Restore realizado", 1));
         }
     }
