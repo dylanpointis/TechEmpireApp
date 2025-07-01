@@ -125,6 +125,7 @@
     <Content Include="Logout.aspx" />
     <Content Include="Registrarse.aspx" />
     <Content Include="ReparacionBD.aspx" />
+    <Content Include="Respaldo.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -253,6 +254,13 @@
     </Compile>
     <Compile Include="ReparacionBD.aspx.designer.cs">
       <DependentUpon>ReparacionBD.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Respaldo.aspx.cs">
+      <DependentUpon>Respaldo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Respaldo.aspx.designer.cs">
+      <DependentUpon>Respaldo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

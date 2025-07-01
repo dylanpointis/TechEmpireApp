@@ -54,6 +54,7 @@
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/About" id="btnAcercaDe">Acerca de</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact" id="btnContacto">Contacto</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/AuditoriaEventos" visible="false" id="btnEventos">Eventos</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Respaldo" visible="false" id="btnRespaldo">Respaldo</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Logout" visible="false" id="btnCerrarSesion">Cerrar sesión</a></li>
                     </ul>
                 </div>

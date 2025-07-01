@@ -51,6 +51,15 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
         protected global::System.Web.UI.HtmlControls.HtmlAnchor btnEventos;
 
         /// <summary>
+        /// Control btnRespaldo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor btnRespaldo;
+
+        /// <summary>
         /// Control btnCerrarSesion.
         /// </summary>
         /// <remarks>
