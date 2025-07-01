@@ -5,7 +5,7 @@
         Inconsistencia encontrada en la base de datos.
         <br />
         <br />
-        Tabla afectada:
+        Tablas afectadas:
     </b></p>
 
     <asp:Label ID="lblTablaAfectada" runat="server" Text="-" Font-Bold="true" style="text-align: center; display: block; width: 100%; font-size: 40px"></asp:Label>

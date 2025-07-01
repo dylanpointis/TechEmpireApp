@@ -14,7 +14,7 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
         BLLDigitoVerificador bllDV = new BLLDigitoVerificador();
         protected void Page_Load(object sender, EventArgs e)
         {
-            lblTablaAfectada.Text = Session["TablaError"].ToString();
+            lblTablaAfectada.Text = Session["TablasError"].ToString();
         }
 
         protected void btnSalir_Click(object sender, EventArgs e)

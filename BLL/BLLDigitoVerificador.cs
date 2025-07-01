@@ -56,10 +56,11 @@ namespace BLL
             return Encriptacion.EncriptarSHA256(DatosConcatenados);
         }
 
-        public void ComprobarDV()
+        public List<string> ComprobarDV()
         {
             DataTable dt = dalDV.ObtenerTabla("DV");
             DVTablas.Clear();
+            List<string> errores = new List<string>();
 
             foreach (DataRow r in dt.Rows)
             {
@@ -71,9 +72,11 @@ namespace BLL
 
                 if (DVTabla.Rows[0][1].ToString() != DV.DVH || DVTabla.Rows[0][2].ToString() != DV.DVV)
                 {
-                    throw new TaskCanceledException($"{DV.Tabla}");
+                    errores.Add(DV.Tabla);
                 }
             }
+
+            return errores;
         }
 
         public void RecalcularBD()

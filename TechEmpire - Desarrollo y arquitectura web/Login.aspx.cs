@@ -42,16 +42,11 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
 
                 Session["User"] = user;
 
-                bllDV.ComprobarDV();
+                List<string> inconsistenciasBD = bllDV.ComprobarDV();
 
-                Response.Redirect("Default.aspx");
-            }
-            catch (Exception ex)
-            {
-                if (ex is TaskCanceledException)
+                if (inconsistenciasBD.Count > 0)
                 {
-                    BEUsuario user = Session["User"] as BEUsuario;
-                    Session["TablaError"] = ex.Message;
+                    Session["TablasError"] = string.Join(", ", inconsistenciasBD);
                     if (user.codRol == 1 || user.codRol == 2)
                     {
                         Response.Redirect("ReparacionBD.aspx");
@@ -61,10 +56,12 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
                         Response.Write($"<script>alert('Sistema no disponible');</script>");
                     }
                 }
-                else
-                {
+
+                Response.Redirect("Default.aspx");
+            }
+            catch (Exception ex)
+            {
                     lblError.Text = ex.Message;
-                }
             }
 
         }
