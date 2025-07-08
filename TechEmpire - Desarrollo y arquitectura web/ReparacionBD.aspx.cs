@@ -1,4 +1,5 @@
-﻿using BLL;
+﻿using BE;
+using BLL;
 using Services;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,13 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
         BLLDigitoVerificador bllDV = new BLLDigitoVerificador();
         protected void Page_Load(object sender, EventArgs e)
         {
+            BEUsuario user = Session["User"] as BEUsuario;
+            //solo puede entrar el webmaster
+            if (user == null ||  user.codRol != 2)
+            {
+                Response.Redirect("Login.aspx");
+            }
+
             lblTablaAfectada.Text = Session["TablasError"].ToString();
         }
 

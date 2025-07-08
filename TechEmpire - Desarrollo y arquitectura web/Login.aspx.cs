@@ -47,13 +47,15 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
                 if (inconsistenciasBD.Count > 0)
                 {
                     Session["TablasError"] = string.Join(", ", inconsistenciasBD);
-                    if (user.codRol == 1 || user.codRol == 2)
+                    if (user.codRol == 2)
                     {
                         Response.Redirect("ReparacionBD.aspx");
                     }
                     else
                     {
+                        lblError.Text = "Sistema no disponible";
                         Response.Write($"<script>alert('Sistema no disponible');</script>");
+                        return;
                     }
                 }
 
