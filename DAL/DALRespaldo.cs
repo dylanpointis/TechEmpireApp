@@ -19,7 +19,7 @@ namespace DAL
         {
             try
             {
-                dalCon.EstablecerConexionConMaster(); //Metodo para conectarse con MASTER. No me funcionaba el "USE master"
+                dalCon.EstablecerConexionConMaster(); //Metodo para conectarse con MASTER. 
 
 
                 //Cambiar la base de datos a modo SINGLE_USER y cerrar todas las conexiones activas

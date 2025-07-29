@@ -42,9 +42,19 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
                 lblMensaje.Text = "Error al crear el directorio de backups: " + ex.Message;
                 return;
             }
+            // Generar el nombre del archivo de respaldo con la fecha y hora actual
             string nombreArchivo = $"TechEmpire.BackUp_{DateTime.Now.ToString("yyyyMMdd_HHmm")}.bak";
             string rutaCompleta = @"D:\Backups\" + nombreArchivo;
-            bllRespaldo.RealizarBackUp(rutaCompleta, user.NombreUsuario);
+            //Llamar al metodo de respaldo de la BLL
+            try
+            {
+                bllRespaldo.RealizarBackUp(rutaCompleta, user.NombreUsuario);
+            }
+            catch (Exception ex)
+            {
+                lblMensaje.Text = "Error al realizar el respaldo: " + ex.Message;
+                return;
+            }
 
             //Descargar el archivo
             Response.ContentType = "application/octet-stream";
@@ -55,19 +65,38 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
 
         protected void btnRestore_Click(object sender, EventArgs e)
         {
-            //Session["archivo"] = Path.GetFileName(FileUpload1.FileName.ToString());
+            // Verificar si se ha seleccionado un archivo para restaurar
+            if (!FileUpload1.HasFile)
+            {
+                lblMensaje.Text = "Por favor, seleccione un archivo para restaurar.";
+                return;
+            }
+
+
+            // Verificar si existe la carpeta Uploads
             if (!Directory.Exists(@"D:\Uploads\"))
             {
                 Directory.CreateDirectory(@"D:\Uploads\");
             }
-            string savePath = @"D:\Uploads\" + FileUpload1.FileName; // Guardarlo en el servidor
+
+           
+            //guardar el archivo subido en la carpeta Uploads
+            string savePath = @"D:\Uploads\" + FileUpload1.FileName; 
 
             // Guardar el archivo
             FileUpload1.SaveAs(savePath);
 
-
-
-            bllRespaldo.RealizarRestore(savePath, user.NombreUsuario);
+            //Realizar el restore de la base de datos
+            try
+            {
+                bllRespaldo.RealizarRestore(savePath, user.NombreUsuario);
+                lblMensaje.Text = "Base de datos restaurada";
+            }
+            catch(Exception ex)
+            {
+                lblMensaje.Text = "Error al restaurar la base de datos: " + ex.Message;
+                return;
+            }
         }
     }
 }

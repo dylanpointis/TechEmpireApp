@@ -10,8 +10,10 @@
         <label>Restaurar</label>
         <br />
          <asp:FileUpload ID="FileUpload1" runat="server"  />
-        <asp:Label ID="lblMensaje" runat="server" Text=""></asp:Label>
     
         <asp:Button ID="btnRestore" runat="server" Text="Restaurar base de datos" OnClick="btnRestore_Click" CssClass="btn btn-primary"/>
+        <br />
+        
+        <asp:Label ID="lblMensaje" runat="server" Text=""></asp:Label>
     <br />
 </asp:Content>
