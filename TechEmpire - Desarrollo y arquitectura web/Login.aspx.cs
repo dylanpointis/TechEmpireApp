@@ -19,52 +19,42 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            if (txtNombreUsuario.Text.Trim() == "")
-            {
-                lblError.Text = "Ingresar el nombre de usuario";
-                return;
-            }
-            if (txtClave.Text.Trim().Length < 8)
-            {
-                lblError.Text = "Ingresar la contraseña (Mayor a 8 caracteres)";
-                return;
-            }
 
-
-            try
-            {
-                BEUsuario user = bllUsuario.Login(txtNombreUsuario.Text, txtClave.Text);
-
-                Session["User"] = user;
-
-                List<string> inconsistenciasBD = bllDV.ComprobarDV();
-
-                if (inconsistenciasBD.Count > 0)
+            if (IsValid) {
+                try
                 {
-                    Session["TablasError"] = string.Join(", ", inconsistenciasBD);
-                    if (user.codRol == 2)
-                    {
-                        Response.Redirect("ReparacionBD.aspx");
-                    }
-                    else
-                    {
-                        lblError.Text = "Sistema no disponible";
-                        Response.Write($"<script>alert('Sistema no disponible');</script>");
-                        return;
-                    }
-                }
+                    BEUsuario user = bllUsuario.Login(txtNombreUsuario.Text, txtClave.Text);
 
-                Response.Redirect("Default.aspx");
-            }
-            catch (Exception ex)
-            {
-                    lblError.Text = ex.Message;
-            }
+                    Session["User"] = user;
+
+                    List<string> inconsistenciasBD = bllDV.ComprobarDV();
+
+                    if (inconsistenciasBD.Count > 0)
+                    {
+                        Session["TablasError"] = string.Join(", ", inconsistenciasBD);
+                        if (user.codRol == 2)
+                        {
+                            Response.Redirect("ReparacionBD.aspx");
+                        }
+                        else
+                        {
+                            lblError.Text = "Sistema no disponible";
+                            Response.Write($"<script>alert('Sistema no disponible');</script>");
+                            return;
+                        }
+                    }
+
+                    Response.Redirect("Default.aspx");
+                }
+                catch (Exception ex)
+                {
+                        lblError.Text = ex.Message;
+                }
+                }
 
         }
 

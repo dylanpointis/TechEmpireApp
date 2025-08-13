@@ -9,6 +9,28 @@
         <div class="d-flex flex-column">
             <asp:Label ID="lblClave" runat="server" Text="Contraseña"></asp:Label>
             <asp:TextBox ID="txtClave" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox>
+        
+            <asp:RequiredFieldValidator
+                controltovalidate="txtClave"
+                text="Debe escribir la contraseña"
+                display="Dynamic"
+                runat="server"
+                ></asp:RequiredFieldValidator>
+            <asp:RegularExpressionValidator
+                controltovalidate="txtClave"
+                text="Su password debe contener entre 3 y 20 caracteres"
+                validationexpression="\w{3,20}"
+                runat="server"
+                ></asp:RegularExpressionValidator>
+
+             <asp:RegularExpressionValidator
+             controltovalidate="txtClave"
+             text="Su password debe contener al menos 1 numero y un caracter"
+             validationexpression="[a-zA-Z]+\w*\d+\w*"
+             runat="server"
+             ></asp:RegularExpressionValidator>
+        
+        
         </div>
         <div>
             <asp:Button ID="btnLogin" runat="server" Text="Iniciar sesión" CssClass="btn btn-primary"  OnClick="btnLogin_Click" />
