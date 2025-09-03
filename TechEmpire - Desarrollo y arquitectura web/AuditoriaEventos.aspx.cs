@@ -12,6 +12,7 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
 {
     public partial class AuditoriaEventos : System.Web.UI.Page
     {
+        BLLEvento bLLEvento = new BLLEvento();
         protected void Page_Load(object sender, EventArgs e)
         {
             //Solo puede entrar el webmaster o el administrador
@@ -20,12 +21,31 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
             {
                 Response.Redirect("Login.aspx");
             }
-            BLLEvento bLLEvento = new BLLEvento();
 
-            List<Evento> events = bLLEvento.TraerListaEventos();
+            if (!IsPostBack) 
+            {
+                List<Evento> events = bLLEvento.TraerListaEventos();
 
-            gvEventos.DataSource = events;
-            gvEventos.DataBind();
+                gvEventos.DataSource = events;
+                gvEventos.DataBind();
+            }
+         
+        }
+
+        protected void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            DateTime fechaInicio = calendariofechaInicio.SelectedDate;
+            DateTime fechaFin = calendariofechaFin.SelectedDate;
+
+
+
+            if(fechaFin >= fechaInicio)
+            {
+                List<Evento> lista = bLLEvento.FiltrarEventos(fechaInicio, fechaFin);
+                gvEventos.DataSource = lista;
+                gvEventos.DataBind();
+            }
+
         }
     }
 }

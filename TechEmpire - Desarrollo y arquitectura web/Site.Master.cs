@@ -18,6 +18,7 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
                 BEUsuario user = Session["User"] as BEUsuario;
 
                 btnCerrarSesion.Visible = true;
+                btnReuniones.Visible = true;
 
                 if(user.codRol == 1 || user.codRol == 2)
                 {

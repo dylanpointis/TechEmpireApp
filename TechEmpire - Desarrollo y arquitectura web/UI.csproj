@@ -119,6 +119,7 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Ads.xml" />
     <None Include="Icons\dragon-techempire.png" />
     <None Include="Icons\logo-nav.png" />
     <Content Include="Login.aspx" />
@@ -126,6 +127,7 @@
     <Content Include="Registrarse.aspx" />
     <Content Include="ReparacionBD.aspx" />
     <Content Include="Respaldo.aspx" />
+    <Content Include="Reuniones.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -182,6 +184,7 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
+    <Content Include="AdStyle.css" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -261,6 +264,13 @@
     </Compile>
     <Compile Include="Respaldo.aspx.designer.cs">
       <DependentUpon>Respaldo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reuniones.aspx.cs">
+      <DependentUpon>Reuniones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reuniones.aspx.designer.cs">
+      <DependentUpon>Reuniones.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

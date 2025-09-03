@@ -14,6 +14,18 @@ namespace DAL
     {
         DALConexion dalCon = new DALConexion();
 
+        public DataTable FiltrarEventos(string fechaInicio, string fechaFin)
+        {
+            SqlParameter[] parametros = new SqlParameter[]
+             {
+                new SqlParameter("@fechaInicio", fechaInicio),
+                new SqlParameter("@fechaFin", fechaFin),
+             };
+            DataTable tabla = dalCon.ConsultaProcAlmacenado("FiltrarEventos", parametros);
+
+            return tabla;
+        }
+
         public void RegistrarEvento(Evento evento)
         {
             SqlParameter[] parametros = new SqlParameter[]

@@ -3,8 +3,19 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <main>
+        <link href="AdStyle.css" rel="stylesheet" type="text/css" />
         <section class="d-flex flex-column">
             <asp:Label ID="lblUser" runat="server" Text=""></asp:Label>
+
+            <asp:AdRotator
+                AdvertisementFile="Ads.xml"
+                BorderColor="Black"
+                BorderWidth="1"
+                runat="server"
+                CssClass="AdRotator"
+                />
+
+
             <h1>Tech Empire</h1>
             <div >
                 <asp:TextBox ID="txtBuscarProducto" runat="server"></asp:TextBox>

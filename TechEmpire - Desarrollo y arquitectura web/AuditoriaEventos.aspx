@@ -16,5 +16,22 @@
             </Columns>
         </asp:GridView>
     
+            <div style="display: flex; gap: 3em">
+
+                <div>
+                    <p>Fecha inicio:</p>
+                    <asp:Calendar ID="calendariofechaInicio" runat="server" CssClass=""></asp:Calendar>
+                </div>
+                
+                <div>
+                     <p>Fecha fin:</p>
+                     <asp:Calendar ID="calendariofechaFin" runat="server"></asp:Calendar>
+                </div>
+            </div>
+           <br />
+           <asp:Button ID="btnFiltrar" runat="server" Text="Filtrar" OnClick="btnFiltrar_Click" CssClass="btn btn-primary" />
+           
+
+
        </main>
 </asp:Content>
