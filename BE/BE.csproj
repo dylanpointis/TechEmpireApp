@@ -47,9 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BEItemCarrito.cs" />
     <Compile Include="BEProducto.cs" />
     <Compile Include="BERol.cs" />
     <Compile Include="BEUsuario.cs" />
+    <Compile Include="BEVenta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

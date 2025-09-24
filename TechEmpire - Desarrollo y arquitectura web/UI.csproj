@@ -120,6 +120,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Ads.xml" />
+    <Content Include="EstadisticasNegocio.asmx" />
     <None Include="Icons\dragon-techempire.png" />
     <None Include="Icons\logo-nav.png" />
     <Content Include="Login.aspx" />
@@ -292,6 +293,10 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="EstadisticasNegocio.asmx.cs">
+      <DependentUpon>EstadisticasNegocio.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>

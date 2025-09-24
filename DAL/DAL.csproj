@@ -53,6 +53,7 @@
     <Compile Include="DALProducto.cs" />
     <Compile Include="DALRespaldo.cs" />
     <Compile Include="DALUsuario.cs" />
+    <Compile Include="DALVenta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

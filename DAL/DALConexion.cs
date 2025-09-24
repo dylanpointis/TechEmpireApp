@@ -24,6 +24,7 @@ namespace DAL
 
         #region MODO CONECTADO
 
+
         public DataTable ConsultaProcAlmacenado(string nombreProc, SqlParameter[] parametros)
         {
             DataTable tabla = new DataTable();
