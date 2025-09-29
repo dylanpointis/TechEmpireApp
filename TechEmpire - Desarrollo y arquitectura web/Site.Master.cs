@@ -24,6 +24,7 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
                 {
                     btnEventos.Visible = true;
                     btnRespaldo.Visible = true;
+                    btnEstadisticas.Visible = true;
                 }
             }
 

@@ -14,7 +14,7 @@ namespace BLL
 
         private DALVenta dalVenta = new DALVenta();
 
-        public List<BEVenta> FiltrarVentas(string fechaInicio, string fechaFin)
+        public Array FiltrarVentas(string fechaInicio, string fechaFin)
         {
             List<BEVenta> lista = new List<BEVenta>();
             DataTable tabla = dalVenta.TraerListaVentas(fechaInicio, fechaFin);
@@ -53,19 +53,26 @@ namespace BLL
                     )
                 };
 
-
-
-                if(lista.FirstOrDefault(v => v.CodVenta == venta.CodVenta) == null)
+                //trae las ventas
+                if (lista.FirstOrDefault(v => v.CodVenta == venta.CodVenta) == null)
                 {
                     lista.Add(venta);
                 }
-                
+
             }
 
+            var productosMasVendidos = tabla.AsEnumerable()
+            .GroupBy(r => r.Field<int>("CodigoProducto"))
+            .Select(g => new
+            {
+                CodigoProducto = g.Key,
+                Nombre = g.First().Field<string>("Nombre"),
+                CantidadVendida = g.Sum(x => x.Field<int>("Cantidad"))
+            })
+            .OrderByDescending(x => x.CantidadVendida)
+            .ToArray();
 
-
-
-            return lista;
+            return productosMasVendidos;
         }
     }
 }

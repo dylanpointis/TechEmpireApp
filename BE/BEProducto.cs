@@ -36,5 +36,10 @@ namespace BE
             this.BorradoLogico = borrado;
         }
 
+        public BEProducto()
+        {
+
+        }
+
     }
 }

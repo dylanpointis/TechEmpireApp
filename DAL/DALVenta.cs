@@ -24,7 +24,6 @@ namespace DAL
                 new SqlParameter("@fechaFin", fechaFin),
             };
 
-
             DataTable tabla = dalCon.ConsultaProcAlmacenado("TraerVentas", parametros);
             return tabla;
 

@@ -123,6 +123,7 @@
     <Content Include="EstadisticasNegocio.asmx" />
     <None Include="Icons\dragon-techempire.png" />
     <None Include="Icons\logo-nav.png" />
+    <Content Include="InformeVentas.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Logout.aspx" />
     <Content Include="Registrarse.aspx" />
@@ -157,6 +158,10 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -187,6 +192,15 @@
     <Content Include="Site.Master" />
     <Content Include="AdStyle.css" />
     <Content Include="ViewSwitcher.ascx" />
+    <Content Include="Web References\EstadisticasNegocioWebService\BEVenta1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\EstadisticasNegocioWebService\EstadisticasNegocio.wsdl" />
+    <Content Include="Web References\EstadisticasNegocioWebService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <None Include="Web References\EstadisticasNegocioWebService\EstadisticasNegocio.disco" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
@@ -225,6 +239,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="InformeVentas.aspx.cs">
+      <DependentUpon>InformeVentas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeVentas.aspx.designer.cs">
+      <DependentUpon>InformeVentas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -244,6 +265,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Registrarse.aspx.cs">
       <DependentUpon>Registrarse.aspx</DependentUpon>
@@ -298,6 +324,11 @@
       <DependentUpon>EstadisticasNegocio.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Web References\EstadisticasNegocioWebService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -332,6 +363,25 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="https://localhost:44387/EstadisticasNegocio.asmx%3fop=FiltrarVenta">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\EstadisticasNegocioWebService\</RelPath>
+      <UpdateFromURL>https://localhost:44387/EstadisticasNegocio.asmx%3fop=FiltrarVenta</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>TechEmpire___Desarrollo_y_arquitectura_web_localhost1_WebServiceVentas</CachedSettingsPropName>
+    </WebReferenceUrl>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

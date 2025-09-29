@@ -69,6 +69,15 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
         protected global::System.Web.UI.HtmlControls.HtmlAnchor btnReuniones;
 
         /// <summary>
+        /// Control btnEstadisticas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor btnEstadisticas;
+
+        /// <summary>
         /// Control btnCerrarSesion.
         /// </summary>
         /// <remarks>

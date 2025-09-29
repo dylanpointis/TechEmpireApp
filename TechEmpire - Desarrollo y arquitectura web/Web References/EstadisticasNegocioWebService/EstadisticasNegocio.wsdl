@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FiltrarVenta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fechaInicio" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fechaFin" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FiltrarVentaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FiltrarVentaResult" type="tns:ArrayOfBEVenta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBEVenta">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BEVenta" nillable="true" type="tns:BEVenta" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BEVenta">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CodVenta" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Fecha" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Hora" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MontoTotal" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" name="NombreUsuario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Carrito" type="tns:ArrayOfBEItemCarrito" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfBEItemCarrito">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BEItemCarrito" nillable="true" type="tns:BEItemCarrito" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BEItemCarrito">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CodVenta" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodProducto" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Cantidad" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PrecioVenta" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" name="Producto" type="tns:BEProducto" />
+          <s:element minOccurs="0" maxOccurs="1" name="Venta" type="tns:BEVenta" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BEProducto">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CodigoProducto" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Marca" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Color" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ImgUrl" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Precio" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Stock" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="StockMax" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="StockMin" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="BorradoLogico" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="FiltrarVentaSoapIn">
+    <wsdl:part name="parameters" element="tns:FiltrarVenta" />
+  </wsdl:message>
+  <wsdl:message name="FiltrarVentaSoapOut">
+    <wsdl:part name="parameters" element="tns:FiltrarVentaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceVentasSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FiltrarVenta">
+      <wsdl:input message="tns:FiltrarVentaSoapIn" />
+      <wsdl:output message="tns:FiltrarVentaSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceVentasSoap" type="tns:WebServiceVentasSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FiltrarVenta">
+      <soap:operation soapAction="http://tempuri.org/FiltrarVenta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceVentasSoap12" type="tns:WebServiceVentasSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FiltrarVenta">
+      <soap12:operation soapAction="http://tempuri.org/FiltrarVenta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebServiceVentas">
+    <wsdl:port name="WebServiceVentasSoap" binding="tns:WebServiceVentasSoap">
+      <soap:address location="https://localhost:44387/EstadisticasNegocio.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceVentasSoap12" binding="tns:WebServiceVentasSoap12">
+      <soap12:address location="https://localhost:44387/EstadisticasNegocio.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

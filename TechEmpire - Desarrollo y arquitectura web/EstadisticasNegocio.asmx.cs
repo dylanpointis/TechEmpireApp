@@ -22,8 +22,13 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
         [WebMethod]
         public string HelloWorld()
         {
-            List<BEVenta> ventas = bllVenta.FiltrarVentas("2025-09-23", "2025-09-23");
             return "Hola a todos";
+        }
+
+        [WebMethod]
+        public Array FiltrarVenta(string fechaInicio, string fechaFin)
+        {
+            return bllVenta.FiltrarVentas(fechaInicio, fechaFin);
         }
     }
 }
