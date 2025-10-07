@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Services;
 using BLL;
+using System.Data;
 
 namespace TechEmpire___Desarrollo_y_arquitectura_web
 {
@@ -28,7 +29,21 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
         [WebMethod]
         public Array FiltrarVenta(string fechaInicio, string fechaFin)
         {
-            return bllVenta.FiltrarVentas(fechaInicio, fechaFin);
+           DataTable tabla = bllVenta.FiltrarVentas(fechaInicio, fechaFin);
+
+            var productosMasVendidos = tabla.AsEnumerable()
+              .GroupBy(r => r.Field<int>("CodigoProducto"))
+              .Select(g => new
+              {
+                  CodigoProducto = g.Key,
+                  Nombre = g.First().Field<string>("Nombre"),
+                  CantidadVendida = g.Sum(x => x.Field<int>("Cantidad")),
+                  TotalVendido = g.Sum(x => x.Field<double>("PrecioVenta") * x.Field<int>("Cantidad"))
+              })
+              .OrderByDescending(x => x.CantidadVendida)
+              .ToArray();
+
+            return productosMasVendidos;
         }
     }
 }
