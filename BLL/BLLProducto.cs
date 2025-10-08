@@ -28,5 +28,22 @@ namespace BLL
             return lista;
         }
 
+
+        public BEProducto TraerProducto(int codigoProducto)
+        {
+            DataTable tabla = dalProd.TraerProducto(codigoProducto);
+
+            BEProducto result = null;
+
+            foreach (DataRow row in tabla.Rows)
+            {
+                result = new BEProducto(Convert.ToInt32(row[0]), row[1].ToString(), row[2].ToString(),
+                    row[3].ToString(), row[4].ToString(), row[5].ToString(), Convert.ToDouble(row[6]), Convert.ToInt32(row[7]),
+                    Convert.ToInt32(row[8]), Convert.ToInt32(row[9]), Convert.ToBoolean(row[10]));
+                break;
+            }
+            return result;
+        }
+
     }
 }

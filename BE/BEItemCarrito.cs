@@ -11,7 +11,7 @@ namespace BE
         public int CodVenta { get; set; }
         public int CodProducto { get; set; }
         public int Cantidad { get; set; }
-        public float PrecioVenta { get; set; }
+        public double PrecioVenta { get; set; }
 
         public BEProducto Producto { get; set; }
         public BEVenta Venta { get; set; }

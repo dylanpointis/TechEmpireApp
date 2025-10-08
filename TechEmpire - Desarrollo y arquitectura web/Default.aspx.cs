@@ -42,6 +42,48 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
 
 
 
+        protected void btnAgregarCarrito_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            int codigoProducto = int.Parse(btn.CommandArgument);
+
+
+            List<BEProducto> listaProductos = bllProd.TraerListaProducto();
+
+            // Obtener el producto desde la lista original (puedes optimizar esto en producción)
+            BEProducto productoSeleccionado = bllProd.TraerListaProducto()
+                                                     .FirstOrDefault(p => p.CodigoProducto == codigoProducto);
+
+            BEVenta ventaActual;
+            if (Session["VentaActual"] == null)
+            {
+                ventaActual = new BEVenta();
+                Session["VentaActual"] = ventaActual;
+            }
+            else
+            {
+                ventaActual = Session["VentaActual"] as BEVenta;
+            }
+
+
+            ventaActual.CodVenta = 0;
+            if (productoSeleccionado != null)
+            {
+                //ScriptManager.RegisterStartupScript(this, GetType(), "alert", $"alert('Producto {productoSeleccionado.Nombre} agregado al carrito');", true);
+
+                int cantidad = 1;;
+                ventaActual.AgregarItem(ventaActual, productoSeleccionado, cantidad);
+
+            }
+        }
+
+
+
+
+
+
+
+
 
 
 

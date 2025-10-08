@@ -38,7 +38,7 @@
                         <img src='<%# Eval("ImgUrl") %>' alt="Imagen producto" class="card-img-top" style="max-height:150px;object-fit:cover;" />
                         <br />
                         <br />
-                        <asp:Button ID="btnAgregarCarrito" runat="server" Text="Agregar al carrito" CssClass="btn btn-success" CommandArgument='<%# Eval("CodigoProducto") %>' />
+                        <asp:Button ID="btnAgregarCarrito" runat="server" Text="Agregar al carrito" CssClass="btn btn-success" CommandArgument='<%# Eval("CodigoProducto") %>' OnClick="btnAgregarCarrito_Click" />
                     </div>
                 </div>
             </ItemTemplate>
