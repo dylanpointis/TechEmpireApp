@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using BE;
 using BLL;
+using System.Xml;
 
 namespace TechEmpire___Desarrollo_y_arquitectura_web
 {
@@ -73,7 +74,26 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
 
                 int cantidad = 1;;
                 ventaActual.AgregarItem(ventaActual, productoSeleccionado, cantidad);
-
+                
+                //Ejercicio B XmlTextWriter
+                XmlTextWriter escritor = new XmlTextWriter(Server.MapPath("Carrito.xml"), null);
+                escritor.Formatting = Formatting.Indented;
+                
+                escritor.WriteStartDocument();
+                escritor.WriteStartElement("Carrito");
+                foreach (BEItemCarrito item in ventaActual.Carrito)
+                {
+                    escritor.WriteStartElement("Item");
+                    escritor.WriteElementString("CodProducto", item.CodProducto.ToString());
+                    escritor.WriteElementString("NombreProducto", item.Producto.Nombre);
+                    escritor.WriteElementString("Cantidad", item.Cantidad.ToString());
+                    escritor.WriteElementString("PrecioVenta", item.PrecioVenta.ToString());
+                    escritor.WriteElementString("ImgUrl", item.Producto.ImgUrl);
+                    escritor.WriteEndElement();
+                }
+                escritor.WriteEndElement();
+                escritor.WriteEndDocument();
+                escritor.Close();
             }
         }
 

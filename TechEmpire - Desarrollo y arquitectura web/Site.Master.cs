@@ -19,8 +19,9 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
 
                 btnCerrarSesion.Visible = true;
                 btnReuniones.Visible = true;
+                btnCarrito.Visible = true;
 
-                if(user.codRol == 1 || user.codRol == 2)
+                if (user.codRol == 1 || user.codRol == 2)
                 {
                     btnEventos.Visible = true;
                     btnRespaldo.Visible = true;

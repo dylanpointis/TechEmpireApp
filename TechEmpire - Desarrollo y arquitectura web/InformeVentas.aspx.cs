@@ -1,4 +1,5 @@
-﻿using BLL;
+﻿using BE;
+using BLL;
 using Microsoft.Ajax.Utilities;
 using Services;
 using System;
@@ -13,10 +14,19 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
 {
     public partial class InformeVentas : System.Web.UI.Page
     {
+
         //creo una instancia del servicio web estadisticasNegocio.asmx
         WebServiceVentas ws = new WebServiceVentas();
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Solo puede entrar el webmaster o el administrador
+            BEUsuario user = Session["User"] as BEUsuario;
+            if (user == null || (user.codRol != 1 && user.codRol != 2))
+            {
+                Response.Redirect("Login.aspx");
+            }
+
+
             if (!IsPostBack)
             {
                 GridView1.DataSource = ws.FiltrarVenta(DateTime.Now.AddMonths(-1).ToString("yyyy-MM-dd"), DateTime.Now.ToString("yyyy-MM-dd"));

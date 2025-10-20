@@ -98,6 +98,7 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="AuditoriaEventos.aspx" />
+    <Content Include="Carrito.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -221,6 +222,13 @@
     </Compile>
     <Compile Include="AuditoriaEventos.aspx.designer.cs">
       <DependentUpon>AuditoriaEventos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Carrito.aspx.cs">
+      <DependentUpon>Carrito.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Carrito.aspx.designer.cs">
+      <DependentUpon>Carrito.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>

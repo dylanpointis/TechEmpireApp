@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<Carrito>
+  <Item>
+    <CodProducto>8</CodProducto>
+    <NombreProducto>SSD Kingston A2000 1TB</NombreProducto>
+    <Cantidad>1</Cantidad>
+    <PrecioVenta>250000</PrecioVenta>
+    <ImgUrl>https://http2.mlstatic.com/D_864286-MLU71035597769_082023-C.jpg</ImgUrl>
+  </Item>
+  <Item>
+    <CodProducto>5</CodProducto>
+    <NombreProducto>Mouse Logitech G502 HERO</NombreProducto>
+    <Cantidad>1</Cantidad>
+    <PrecioVenta>80000</PrecioVenta>
+    <ImgUrl>https://resource.logitech.com/content/dam/gaming/en/products/g502-hero/g502-hero-gallery-1.png</ImgUrl>
+  </Item>
+</Carrito>

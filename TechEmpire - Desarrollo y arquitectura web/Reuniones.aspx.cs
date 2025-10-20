@@ -19,6 +19,10 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
         protected void Page_Load(object sender, EventArgs e)
         {
             usuarioActual = Session["User"] as BEUsuario;
+            if(usuarioActual == null)
+                Response.Redirect("Login.aspx");
+
+
             if (!IsPostBack)
             {
                 Calendar1.SelectedDate = DateTime.Now;

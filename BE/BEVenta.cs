@@ -31,6 +31,15 @@ namespace BE
             item.PrecioVenta = producto.Precio;
             item.Producto = producto;
 
+            //Si ya esta el producto en el carrito, aumenta la cantidad
+            if (Carrito.FirstOrDefault(i => i.Producto.CodigoProducto == producto.CodigoProducto) != null)
+            {
+                BEItemCarrito itemExistente = Carrito.FirstOrDefault(i => i.Producto.CodigoProducto == producto.CodigoProducto);
+                itemExistente.Cantidad += cantidad;
+                return;
+            }
+
+            //Si no esta, lo agrega
             Carrito.Add(item);
         }
 
