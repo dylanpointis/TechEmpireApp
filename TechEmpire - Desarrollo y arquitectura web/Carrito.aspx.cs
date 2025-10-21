@@ -1,13 +1,16 @@
 ﻿using BE;
 using BLL;
 using Microsoft.Ajax.Utilities;
+using Services;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace TechEmpire___Desarrollo_y_arquitectura_web
 {
@@ -15,6 +18,7 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
     {
         List<BEItemCarrito> carritoActual = new List<BEItemCarrito>();
         BLLVenta bllVenta = new BLLVenta();
+        BLLEvento bllEventos = new BLLEvento();
         protected void Page_Load(object sender, EventArgs e)
         {
             
@@ -46,7 +50,7 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
                 Session["montoTotal"] = carritoActual.Sum(i => i.Cantidad * i.PrecioVenta);
                 Session["cantTotal"] = carritoActual.Sum(i => i.Cantidad);
 
-                lblCant.Text = "Cantidad comprada: f" + Session["cantTotal"].ToString();
+                lblCant.Text = "Cantidad comprada: " + Session["cantTotal"].ToString();
                 lblTotal.Text = "Total: $" + Session["montoTotal"].ToString();
                 rptCarrito.DataSource = carritoActual;
                 rptCarrito.DataBind();
@@ -58,8 +62,13 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
             Button btn = (Button)sender;
             int codigoProducto = int.Parse(btn.CommandArgument);
             //actualizar la cantidad que hay en el carrito de este producto en el xml
-            
-            
+
+            var xml = XDocument.Load(Server.MapPath("Carrito.xml"));
+            var item = xml.Descendants("Item").FirstOrDefault(x => (int)x.Element("CodProducto") == codigoProducto);
+            if (item != null)
+                item.Element("Cantidad").Value = ((int)item.Element("Cantidad") + 1).ToString();
+            xml.Save(Server.MapPath("Carrito.xml"));
+            Response.Redirect(Request.RawUrl);
         }
 
         protected void btnRestar_Click(object sender, EventArgs e)
@@ -68,6 +77,13 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
             Button btn = (Button)sender;
             int codigoProducto = int.Parse(btn.CommandArgument);
             //actualizar xml
+
+            var xml = XDocument.Load(Server.MapPath("Carrito.xml"));
+            var item = xml.Descendants("Item").FirstOrDefault(x => (int)x.Element("CodProducto") == codigoProducto);
+            if (item != null)
+                item.Element("Cantidad").Value = ((int)item.Element("Cantidad") - 1).ToString();
+            xml.Save(Server.MapPath("Carrito.xml"));
+            Response.Redirect(Request.RawUrl);
         }
 
         protected void btnRegistrarVenta_Click(object sender, EventArgs e)
@@ -80,6 +96,12 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
             carrito.montoTotal = double.Parse(Session["montoTotal"].ToString());
 
             bllVenta.RegistrarVenta(carrito, Server.MapPath("Carrito.xml"));
+
+            System.IO.File.WriteAllText(Server.MapPath("Carrito.xml"), "");
+
+            BEUsuario user = Session["User"] as BEUsuario;
+            bllEventos.RegistrarEvento(new Evento(user.NombreUsuario, "Ventas", "Venta realizada", 1));
+
         }
     }
 }

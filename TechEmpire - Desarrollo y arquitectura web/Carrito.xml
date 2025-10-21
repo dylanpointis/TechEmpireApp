@@ -1,17 +1,10 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Carrito>
   <Item>
-    <CodProducto>8</CodProducto>
-    <NombreProducto>SSD Kingston A2000 1TB</NombreProducto>
-    <Cantidad>1</Cantidad>
-    <PrecioVenta>250000</PrecioVenta>
-    <ImgUrl>https://http2.mlstatic.com/D_864286-MLU71035597769_082023-C.jpg</ImgUrl>
-  </Item>
-  <Item>
-    <CodProducto>1</CodProducto>
-    <NombreProducto>RTX 3090 NVIDIA MSI</NombreProducto>
-    <Cantidad>2</Cantidad>
-    <PrecioVenta>1700000</PrecioVenta>
-    <ImgUrl>https://asset.msi.com/resize/image/global/product/product_2_20200924145513_5f6c42d11e2c2.png62405b38c58fe0f07fcef2367d8a9ba1/600.png</ImgUrl>
+    <CodProducto>3</CodProducto>
+    <NombreProducto>AMD Ryzen 9 5900X</NombreProducto>
+    <Cantidad>12</Cantidad>
+    <PrecioVenta>4000000</PrecioVenta>
+    <ImgUrl>https://www.malditohard.com.ar/wp-content/uploads/product/13/100-100001581WOF.webp</ImgUrl>
   </Item>
 </Carrito>

@@ -11,7 +11,7 @@
                 <div class="card-body">
                     <h5 class="card-title"><%# Eval("Producto.Nombre") %></h5>
                     <p class="card-text">Precio: $<%# Eval("PrecioVenta") %></p>
-                    <p class="card-text">Cantidad: $<%# Eval("Cantidad") %></p>
+                    <p class="card-text">Cantidad: <%# Eval("Cantidad") %></p>
                     <img src='<%# Eval("Producto.ImgUrl") %>' alt="Imagen producto" class="card-img-top" style="max-height:150px;object-fit:cover;" />
                     <br />
                     <br />
