@@ -1,4 +1,5 @@
 ﻿using BE;
+using BLL;
 using Microsoft.Ajax.Utilities;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
     public partial class Carrito : System.Web.UI.Page
     {
         List<BEItemCarrito> carritoActual = new List<BEItemCarrito>();
+        BLLVenta bllVenta = new BLLVenta();
         protected void Page_Load(object sender, EventArgs e)
         {
             
@@ -41,11 +43,11 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
                 }
                 reader.Close();
 
-                double total = carritoActual.Sum(i => i.Cantidad * i.PrecioVenta);
-                int cantTotal = carritoActual.Sum(i => i.Cantidad);
+                Session["montoTotal"] = carritoActual.Sum(i => i.Cantidad * i.PrecioVenta);
+                Session["cantTotal"] = carritoActual.Sum(i => i.Cantidad);
 
-                lblCant.Text = "Cantidad comprada: f" + cantTotal.ToString();
-                lblTotal.Text = "Total: $" + total.ToString();
+                lblCant.Text = "Cantidad comprada: f" + Session["cantTotal"].ToString();
+                lblTotal.Text = "Total: $" + Session["montoTotal"].ToString();
                 rptCarrito.DataSource = carritoActual;
                 rptCarrito.DataBind();
             }
@@ -55,7 +57,9 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
         {
             Button btn = (Button)sender;
             int codigoProducto = int.Parse(btn.CommandArgument);
-            //actualizar xml
+            //actualizar la cantidad que hay en el carrito de este producto en el xml
+            
+            
         }
 
         protected void btnRestar_Click(object sender, EventArgs e)
@@ -70,6 +74,12 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
         {
             //registrar venta y evento
             //resetear archivo xml
+
+            BECarrito carrito = new BECarrito();
+            carrito.nombreUsuario = (Session["User"] as BEUsuario).NombreUsuario;
+            carrito.montoTotal = double.Parse(Session["montoTotal"].ToString());
+
+            bllVenta.RegistrarVenta(carrito, Server.MapPath("Carrito.xml"));
         }
     }
 }

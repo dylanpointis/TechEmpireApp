@@ -37,8 +37,6 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
             DateTime fechaInicio = calendariofechaInicio.SelectedDate;
             DateTime fechaFin = calendariofechaFin.SelectedDate;
 
-
-
             if(fechaFin >= fechaInicio)
             {
                 List<Evento> lista = bLLEvento.FiltrarEventos(fechaInicio, fechaFin);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BE;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -11,13 +12,10 @@ namespace DAL
 {
     public class DALVenta
     {
-
         DALConexion dalCon = new DALConexion();
 
         public DataTable TraerListaVentas(string fechaInicio, string fechaFin)
         {
-
-
             SqlParameter[] parametros = new SqlParameter[]
             {
                 new SqlParameter("@fechaInicio", fechaInicio),
@@ -27,6 +25,32 @@ namespace DAL
             DataTable tabla = dalCon.ConsultaProcAlmacenado("TraerVentas", parametros);
             return tabla;
 
+        }
+
+        public void RegistrarVenta(BECarrito carrito)
+        {
+            //registro la venta en la tabla venta y luego los items en la tabla carrito
+            SqlParameter[] parametros = new SqlParameter[]
+            {
+                new SqlParameter("Fecha", DateTime.Now.ToString("yyyy-MM-dd")),
+                new SqlParameter("Hora", DateTime.Now.ToString("hh:mm")),
+                new SqlParameter("@nombreUsuario", carrito.nombreUsuario),
+                new SqlParameter("@montoTotal", carrito.montoTotal)
+            };
+
+            dalCon.EjecutarProcAlmacenado("RegistrarVenta", parametros);
+
+            foreach (var item in carrito.items)
+            {
+                SqlParameter[] parametrosItems = new SqlParameter[]
+                {
+                    //new SqlParameter("@codVenta", item.NombreUsuario),
+                    new SqlParameter("@codProducto", item.CodProducto),
+                    new SqlParameter("@cantidad", item.Cantidad),
+                    new SqlParameter("@precioVenta", item.PrecioVenta),
+                };
+                dalCon.EjecutarProcAlmacenado("RegistrarItems", parametrosItems);
+            }
         }
     }
 }

@@ -48,10 +48,7 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
             Button btn = (Button)sender;
             int codigoProducto = int.Parse(btn.CommandArgument);
 
-
-            List<BEProducto> listaProductos = bllProd.TraerListaProducto();
-
-            // Obtener el producto desde la lista original (puedes optimizar esto en producción)
+            // Obtener el producto desde la lista original
             BEProducto productoSeleccionado = bllProd.TraerListaProducto()
                                                      .FirstOrDefault(p => p.CodigoProducto == codigoProducto);
 
