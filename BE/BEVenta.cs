@@ -11,7 +11,7 @@ namespace BE
         public int CodVenta { get; set; }  
         public string Fecha { get; set; }
         public string Hora { get; set; }
-        public float MontoTotal { get; set; }   
+        public double MontoTotal { get; set; }   
         public string NombreUsuario { get; set; }   
 
 

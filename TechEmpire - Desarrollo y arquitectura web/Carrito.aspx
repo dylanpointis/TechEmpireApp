@@ -28,6 +28,7 @@
         <asp:Label ID="lblCant" runat="server" Text="Cantidad comprada: 0"></asp:Label>
         <asp:Label ID="lblTotal" runat="server" Text="Monto total: 0"></asp:Label>
         <asp:Button ID="btnRegistrarVenta" runat="server" Text="Comprar" CssClass="btn btn-success" style="width: 300px; padding: 1em" OnClick="btnRegistrarVenta_Click" />
+        <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-warning" style="width: 300px; padding: 1em" OnClick="btnCancelar_Click" />
     </div>
         
     </div>

@@ -22,9 +22,9 @@ namespace BLL
             return tabla;
         }
 
-        public void RegistrarVenta(BECarrito carrito, string rutaArchivo)
+        public void RegistrarVenta(BEVenta venta, string rutaArchivo)
         {
-            carrito.items = new List<BEItemCarrito>();
+            venta.Carrito = new List<BEItemCarrito>();
             using (XmlTextReader lector = new XmlTextReader(rutaArchivo))
             {
                 BEItemCarrito itemActual = null;
@@ -70,7 +70,7 @@ namespace BLL
                     {
                         if (itemActual != null)
                         {
-                            carrito.items.Add(itemActual);
+                            venta.Carrito.Add(itemActual);
                             itemActual = null;
                         }
                     }
@@ -79,7 +79,7 @@ namespace BLL
                 }
             }
 
-            dalVenta.RegistrarVenta(carrito);
+            dalVenta.RegistrarVenta(venta);
         }
     }
 }

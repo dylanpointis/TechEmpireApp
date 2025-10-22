@@ -27,20 +27,20 @@ namespace DAL
 
         }
 
-        public void RegistrarVenta(BECarrito carrito)
+        public void RegistrarVenta(BEVenta venta)
         {
             //registro la venta en la tabla venta y luego los items en la tabla carrito
             SqlParameter[] parametros = new SqlParameter[]
             {
                 new SqlParameter("Fecha", DateTime.Now.ToString("yyyy-MM-dd")),
                 new SqlParameter("Hora", DateTime.Now.ToString("hh:mm")),
-                new SqlParameter("@nombreUsuario", carrito.nombreUsuario),
-                new SqlParameter("@montoTotal", carrito.montoTotal)
+                new SqlParameter("@nombreUsuario", venta.NombreUsuario),
+                new SqlParameter("@montoTotal", venta.MontoTotal)
             };
 
             dalCon.EjecutarProcAlmacenado("RegistrarVenta", parametros);
 
-            foreach (var item in carrito.items)
+            foreach (var item in venta.Carrito)
             {
                 SqlParameter[] parametrosItems = new SqlParameter[]
                 {
