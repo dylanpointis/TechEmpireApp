@@ -47,7 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BECarrito.cs" />
     <Compile Include="BEItemCarrito.cs" />
     <Compile Include="BEProducto.cs" />
     <Compile Include="BERol.cs" />
