@@ -65,6 +65,7 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
                 }
                 reader.Close();
 
+                ventaActual.Carrito = carritoActual;
                 Session["montoTotal"] = ventaActual.Carrito.Sum(i => i.Cantidad * i.PrecioVenta);
                 Session["cantTotal"] = ventaActual.Carrito.Sum(i => i.Cantidad);
 
@@ -72,7 +73,6 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
                 lblTotal.Text = "Total: $" + Session["montoTotal"].ToString();
 
 
-                ventaActual.Carrito = carritoActual;
                 rptCarrito.DataSource = ventaActual.Carrito;
                 rptCarrito.DataBind();
             }
@@ -120,6 +120,7 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
             if (item != null)
                 item.Element("Cantidad").Value = ((int)item.Element("Cantidad") + 1).ToString();
             xml.Save(Server.MapPath("Carrito.xml"));
+            //Vuelve a cargar la pagina y leer el XML, actualizando los labels
             Response.Redirect(Request.RawUrl);
         }
 
@@ -142,6 +143,7 @@ namespace TechEmpire___Desarrollo_y_arquitectura_web
 
 
             xml.Save(Server.MapPath("Carrito.xml"));
+            //Vuelve a cargar la pagina y leer el XML, actualizando los labels
             Response.Redirect(Request.RawUrl);
         }
     }

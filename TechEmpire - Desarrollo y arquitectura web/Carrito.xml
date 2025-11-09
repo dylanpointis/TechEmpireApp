@@ -1,17 +1,1 @@
-<?xml version="1.0"?>
-<Carrito>
-  <Item>
-    <CodProducto>1</CodProducto>
-    <NombreProducto>RTX 3090 NVIDIA MSI</NombreProducto>
-    <Cantidad>1</Cantidad>
-    <PrecioVenta>1700000</PrecioVenta>
-    <ImgUrl>https://asset.msi.com/resize/image/global/product/product_2_20200924145513_5f6c42d11e2c2.png62405b38c58fe0f07fcef2367d8a9ba1/600.png</ImgUrl>
-  </Item>
-  <Item>
-    <CodProducto>3</CodProducto>
-    <NombreProducto>AMD Ryzen 9 5900X</NombreProducto>
-    <Cantidad>1</Cantidad>
-    <PrecioVenta>4000000</PrecioVenta>
-    <ImgUrl>https://www.malditohard.com.ar/wp-content/uploads/product/13/100-100001581WOF.webp</ImgUrl>
-  </Item>
-</Carrito>
+<Carrito></Carrito>
